@@ -5,6 +5,7 @@
 - 把 api/index.ts 改为 graphql.ts，保留项目暴露其它 API
 - 补充接口描述，用于显示在接口文档（landing-pages）
 - 将 prisma 挂载到 GraphQL server 的上下文中，方便调用
+- 移除 graphql-tag 包，从 @apollo/client 里面导出 gql 方法
 - [ 待补充 ] 鉴权
 - [ 待补充 ] 增加 Acro Design Pro
 - [ 待补充 ] 插件生成 CRUD 方法
@@ -21,7 +22,7 @@ npm install
 
 ### 2. 初始化数据表
 
-节约学习成本，默认是 SQLite，它文件形式的数据库，无需安装环境，可替换
+默认使用 SQLite，是一种文件形式的数据库，无需安装环境，低成本学习，可配置替换
 
 ```
 prisma migrate dev --name init
