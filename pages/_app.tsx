@@ -1,15 +1,21 @@
-import { ApolloProvider, ApolloClient, InMemoryCache } from "@apollo/client";
+import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from "@apollo/client";
 import 'antd/dist/antd.css'
 import '@/styles/global.css'
 
-const client = new ApolloClient({
-  cache: new InMemoryCache(),
-  uri: "/api/graphql",
+const httpLink = createHttpLink({
+  uri: '/api/graphql'
+})
+
+const cache = new InMemoryCache()
+
+const apolloClient = new ApolloClient({
+  link: httpLink,
+  cache,
 });
 
 function MyApp({ Component, pageProps }) {
   return (
-    <ApolloProvider client={client}>
+    <ApolloProvider client={apolloClient}>
       <Component {...pageProps} />
     </ApolloProvider>
   );
