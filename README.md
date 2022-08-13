@@ -5,6 +5,7 @@
 - 把 api/index.ts 改为 graphql.ts，保留项目暴露其它 API
 - 补充接口描述，用于显示在接口文档（landing-pages）
 - 将 prisma 挂载到 GraphQL server 的上下文中，方便调用
+- 移除 graphql-tag 包，从 @apollo/client 里面导出 gql 方法
 - 使用 Postgresql 数据库
 - [ 待补充 ] 鉴权
 - [ 待补充 ] 增加 Acro Design Pro
@@ -20,7 +21,7 @@ or
 npm install
 ```
 
-### 2. 初始化数据表
+### 2. 创建与初始化数据表
 示例使用的是 [Postgresql](https://www.prisma.io/docs/getting-started/setup-prisma/add-to-existing-project/relational-databases/connect-your-database-typescript-postgres) 数据库，请额外部署环境。但这不是必须的，仍可通过配置更换为 SQLite，它是文件形式的数据库，无需安装环境。
 配置 ./prisma/schema.prisma 文件
 ```
@@ -29,11 +30,11 @@ datasource db {
   url      = "file:./dev.db"
 }
 ```
-初始化
+
 ```
 prisma migrate dev --name init
 ```
-当对新创建的数据库执行 prisma-migrate-dev 时，也会触发 prisma/seed 执行，填充初始化默认数据
+执行 prisma-migrate-dev 时，也会触发 prisma/seed 执行，填充初始化默认数据
 
 
 ### 3. 启动
