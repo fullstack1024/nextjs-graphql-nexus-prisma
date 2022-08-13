@@ -1,6 +1,7 @@
 import Layout from "../components/Layout"
 import Link from "next/link"
 import { useQuery, gql } from "@apollo/client"
+import { getFeedQuery, getFeedQuery_feedings } from "./api/__generated__/getFeedQuery"
 
 const FeedQuery = gql`
   query FeedQuery {
@@ -17,7 +18,7 @@ const FeedQuery = gql`
   }
 `
 
-const Post = ({ post }) => (
+const Post = ({ post }: { post: getFeedQuery_feedings }) => (
   <Link href="/p/[id]" as={`/p/${post.id}`}>
     <a>
       <h2>{post.title}</h2>
@@ -36,7 +37,7 @@ const Post = ({ post }) => (
 )
 
 const Blog = () => {
-  const { loading, error, data } = useQuery(FeedQuery, {
+  const { loading, error, data } = useQuery<getFeedQuery>(FeedQuery, {
     fetchPolicy: "cache-and-network",
   })
 
