@@ -17,5 +17,14 @@ export const Post = objectType({
           })
           .author(),
     })
+    t.list.field('tags', {
+      type: 'Tag',
+      resolve: (parent, args, ctx) =>
+        ctx.prisma.post
+          .findUnique({
+            where: { id: Number(parent.id) },
+          })
+          .tags(),
+    })
   },
 })

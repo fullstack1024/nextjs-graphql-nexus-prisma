@@ -12,6 +12,11 @@ const userData: Prisma.UserCreateInput[] = [
           title: 'Join the Prisma Slack',
           content: 'https://slack.prisma.io',
           published: true,
+          tags: {
+            create: {
+              label: 'css'
+            }
+          }
         },
       ],
     },
@@ -25,6 +30,11 @@ const userData: Prisma.UserCreateInput[] = [
           title: 'Follow Prisma on Twitter',
           content: 'https://www.twitter.com/prisma',
           published: true,
+          tags: {
+            create: {
+              label: 'js'
+            }
+          }
         },
       ],
     },
@@ -38,10 +48,20 @@ const userData: Prisma.UserCreateInput[] = [
           title: 'Ask a question about Prisma on GitHub',
           content: 'https://www.github.com/prisma/prisma/discussions',
           published: true,
+          tags: {
+            create: {
+              label: 'css'
+            }
+          }
         },
         {
           title: 'Prisma on YouTube',
           content: 'https://pris.ly/youtube',
+          tags: {
+            create: {
+              label: 'js'
+            }
+          }
         },
       ],
     },
