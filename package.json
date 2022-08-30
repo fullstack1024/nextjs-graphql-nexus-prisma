@@ -12,7 +12,7 @@
     "generate": "npm -s run generate:prisma && npm -s run generate:nexus",
     "generate:prisma": "prisma generate",
     "ts-node": "ts-node --compiler-options \"{\\\"module\\\":\\\"commonjs\\\"}\"",
-    "generate:nexus": "ts-node --transpile-only -P nexus.tsconfig.json ./pages/api/graphql",
+    "generate:nexus": "ts-node -r tsconfig-paths/register --transpile-only ./pages/api/graphql",
     "studio": "prisma studio"
   },
   "dependencies": {
@@ -42,6 +42,7 @@
     "prisma": "4.1.1",
     "sass": "1.53.0",
     "ts-node": "10.9.1",
+    "tsconfig-paths": "^4.1.0",
     "typescript": "4.7.4"
   },
   "prisma": {

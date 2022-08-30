@@ -1,4 +1,5 @@
 import { nonNull, nullable, queryType, stringArg } from "nexus"
+import sayHello from "@/utils/sayHello"
 
 export const Query = queryType({
   definition(t) {
@@ -50,6 +51,14 @@ export const Query = queryType({
             ],
           },
         })
+      },
+    })
+
+    t.field('sayHello', {
+      type: "String",
+      resolve: (_, { searchString }, ctx) => {
+        sayHello();
+        return 'hello'
       },
     })
   },
